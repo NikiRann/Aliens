@@ -23,7 +23,7 @@ Game.Constants = {
 	unitsDamage : 10,
 	unitsHealth : 100,
 	unitsSize: new Vector(1,1),
-	motherHealth : 1000, //It's a beatuful lady.Don't sue her about her size.
+	motherHealth : 1000, //She's a beatuful lady.Don't sue her about her size.
 	startMoney = 300
 }
 
@@ -32,23 +32,20 @@ function Player(_mother){
 	this.units = [];
 	this.money = Game.Constants.startMoney;
 }
-
-function Unit(_location){
+function Mother()
+function Unit(_location,_player){
 	this.location = _location;
 	this.size = Game.Constants.unitsSize;
 	this.damage = Game.Constants.unitsDamage;
 	this.health = Game.Constants.unitsHealth;
-
+	this.leader = _player;
 	this.move = function(_dir){
 		this.location.add(_dir);
 	}
-	this.damage = function(_unit2){
-		_unit2.health-=this.damage;
+	this.damage = function(_obj){
+		_obj.health -= this.damage;
 	}
 }
-
-window.addEventListener("keydown", function (args) {
-}, false);
 window.addEventListener("keyup", function (args) {
 }, false);
 
